@@ -1,0 +1,531 @@
+/* ===== Tools directory page ===== */
+
+/* Page intro */
+.tools-hero {
+    margin: 4px 0 6px;
+}
+
+.tools-hero .h1 {
+    margin: 0 0 6px;
+}
+
+.tools-hero p {
+    color: rgba(237, 242, 247, .75);
+    max-width: 70ch;
+}
+
+/* Toolbar: search + filter pills */
+.tools-toolbar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0 12px;
+}
+
+/* Search */
+.tools-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(2, 6, 23, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 12px;
+    padding: 8px 10px;
+    min-width: 260px;
+}
+
+.tools-search input {
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: #fff;
+    width: 220px;
+}
+
+.search-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+}
+
+/* Filter pills */
+.filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pill.is-active {
+    background: rgba(124, 58, 237, .25);
+    border-color: rgba(124, 58, 237, .55);
+}
+
+.pill-count {
+    opacity: .75;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Section head */
+.tools-section .section-head {
+    margin: 6px 0 12px;
+}
+
+.section-kicker {
+    color: rgba(237, 242, 247, .6);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+/* Responsive grid */
+.grid-cards {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+    .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1120px) {
+    .grid-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Card */
+.tool-card {
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .03);
+    box-shadow: 0 14px 44px -20px rgba(0, 0, 0, .55);
+    will-change: transform, box-shadow, opacity;
+    transform: translateZ(0);
+    transition: box-shadow .18s ease, transform .18s ease;
+    outline: none;
+}
+
+.toolcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 64px -24px rgba(0, 0, 0, .6);
+}
+
+.toolcard:focus-visible {
+    outline: 2px solid rgba(124, 58, 237, .9);
+    outline-offset: 2px;
+}
+
+/* Card content */
+.toolcard-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.toolcard-title {
+    font-weight: 700;
+}
+
+.toolcard-badge {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(255, 255, 255, .06);
+}
+
+.toolcard-desc {
+    color: rgba(237, 242, 247, .78);
+    margin: 6px 0 12px;
+}
+
+.toolcard-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #bda6ff;
+}
+
+/* Empty state */
+.tool-card.empty {
+    text-align: left;
+}
+
+/* Reuse shared primitives */
+.help {
+    color: rgba(237, 242, 247, .65);
+    font-size: 12px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* quick utilities (add to /tools/style.css) */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.input, select, .checkbox input {
+    background: rgba(2, 6, 23, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px 10px;
+}
+
+@media (min-width: 980px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+/* ==== Prompt → JSON Schema (side-by-side) ==== */
+
+.json2s-card {
+    /* inherits .tool-card visuals; add a subtle panel feel if needed */
+    background: rgba(2, 6, 23, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.json2s-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+@media (min-width: 980px) {
+    .json2s-grid {
+        grid-template-columns: 1.05fr 1.1fr;
+        /* input slightly narrower than output */
+        gap: 20px;
+    }
+}
+
+.json2s-left,
+.json2s-right {
+    min-width: 0;
+    /* prevent overflow from long code lines */
+}
+
+.json2s-textarea {
+    min-height: 320px;
+    /* taller by default for parity with output */
+    resize: vertical;
+    /* allow manual stretch if desired */
+    background: rgba(7, 10, 18, .75);
+    border-color: rgba(255, 255, 255, .14);
+}
+
+@media (min-width: 980px) {
+    .json2s-textarea {
+        min-height: 380px;
+    }
+}
+
+.json2s-hint {
+    margin-top: 8px;
+}
+
+.json2s-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.json2s-output {
+    margin: 0;
+    /* we place it tight to the top */
+    border-radius: 14px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01)),
+        rgba(0, 0, 0, .55);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 10px 28px -16px rgba(0, 0, 0, .55);
+    padding: 14px;
+    max-height: 520px;
+    /* keep it under control on big screens */
+    overflow: auto;
+}
+
+@media (min-width: 980px) {
+    .json2s-output {
+        max-height: 600px;
+    }
+}
+
+.json2s-pre {
+    margin: 0;
+    white-space: pre;
+    /* preserve JSON spacing */
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+/* ===== Prompt → JSON Schema (side-by-side) ===== */
+.json2s-card {
+    background: rgba(2, 6, 23, .6);
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.json2s-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+@media (min-width: 960px) {
+    .json2s-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+    }
+}
+
+.json2s-leftcol {
+    display: flex;
+    flex-direction: column;
+}
+
+.json2s-textarea {
+    min-height: 280px;
+    resize: vertical;
+    background: rgba(7, 10, 18, .75);
+    border-color: rgba(255, 255, 255, .14);
+    margin-bottom: 10px;
+}
+
+.json2s-hint {
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: rgba(237, 242, 247, .65);
+    font-size: 12px;
+}
+
+.json2s-actions {
+    margin-top: auto;
+    /* push buttons to bottom if space allows */
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.json2s-right .output-panel,
+.json2s-output {
+    height: 100%;
+    min-height: 280px;
+    overflow: auto;
+    border-radius: 14px;
+}
+
+
+/* ============================
+   Token → Cost Calculator
+   (class-names only, no DOM changes)
+   ============================ */
+
+.cost-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+/* lay out as two columns at >= 980px */
+@media (min-width: 980px) {
+    .cost-card {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+}
+
+/* top rows (model header, select, helper) are full width */
+.cost-head,
+.cost-model,
+.cost-rates {
+    grid-column: 1 / -1;
+}
+
+/* prompt/completion columns */
+.cost-col {
+    min-width: 0;
+    /* prevent overflow */
+}
+
+/* actions + total span both columns */
+.cost-actions,
+.cost-total {
+    grid-column: 1 / -1;
+}
+
+/* tighten the inputs for visual balance */
+.cost-model {
+    max-width: 420px;
+}
+
+/* gentle emphasis on the total panel */
+.cost-total {
+    box-shadow: 0 10px 32px -18px rgba(0, 0, 0, .55);
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* --- Compare table polish --- */
+
+.cost-compare {
+    overflow: hidden;
+}
+
+.cost-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cost-table thead th {
+    font-weight: 600;
+    color: rgba(240, 241, 245, .85);
+    white-space: nowrap;
+}
+
+.cost-table tbody tr.row--active {
+    background: linear-gradient(0deg, rgba(137, 83, 255, 0.08), rgba(137, 83, 255, 0.08));
+}
+
+.cost-table td,
+.cost-table th {
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+/* keep the select buttons compact and consistent */
+.cost-select {
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+/* optional: make token counts hint a tad dimmer */
+.cost-rates {
+    color: rgba(237, 242, 247, .7);
+}
+
+/* make token counts readable but subtle */
+.meter-label span {
+    opacity: .85;
+}
+
+/* responsive textarea height so the two columns feel even */
+@media (min-width: 980px) {
+    .cost-col .textarea-xl {
+        min-height: 220px;
+    }
+}
+
+
+/* Cost calculator refinements */
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* breathing room between sections */
+}
+
+.tool-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.textarea-xl.input-block {
+    width: 100%;
+    min-height: 140px;
+    resize: vertical;
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    border: 1px solid var(--border, #333);
+    background: var(--surface, #111);
+    color: var(--text, #f5f5f5);
+}
+
+.field-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted, #aaa);
+    margin-top: 2px;
+}
+
+.meter-label {
+    font-size: 0.75rem;
+    color: var(--muted, #888);
+}
+
+/* Action bar spacing */
+.tool-actionbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
