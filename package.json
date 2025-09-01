@@ -1,0 +1,30 @@
+{
+  "name": "ai-tools",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "npm@10.8.2",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && npx rimraf node_modules .turbo"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.5.6"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.22",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.542.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.24.6"
+  }
+}

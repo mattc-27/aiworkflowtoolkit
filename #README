@@ -1,0 +1,48 @@
+# AI Workflow Toolkit
+A collection of lightweight, practical utilities for working with AI models.  
+Built with **Next.js**, **Turborepo**, and **custom CSS**, deployed on **Firebase**.
+
+## Features
+- **Token → Cost Calculator**  
+  Estimate per-request spend across multiple models. Export breakdowns for CI/reviews.
+
+- **Prompt Compression Optimizer**  
+  Trim filler, standardize structure, and reduce wasted tokens before deployment.
+
+- **Prompt → JSON Schema Generator**  
+  Turn natural language into strict JSON Schemas for consistent outputs.
+
+- **Model Picker**  
+  Compare and rank models (OpenAI, Claude, Gemini, Grok) by budget, context, and capabilities.
+
+## Tech Stack
+- [Next.js](https://nextjs.org/) (App Router)
+- [Turborepo](https://turbo.build/repo)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Custom CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) with utility classes
+- Hosted on **Firebase**
+
+## Monorepo Structure
+- apps/
+- tools-next/ # Next.js frontend
+- packages/
+- lib/ # Shared logic (token counting, pricing, schema helpers)
+
+## Development
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+Visit: http://localhost:3000
+```
+
+## Roadmap
+- Expand model coverage (Anthropic Claude, xAI Grok, Google Gemini)
+- Add docs/guide pages with examples & workflows
+- Extend cross-tool bridges (compression → cost, prompt → schema)

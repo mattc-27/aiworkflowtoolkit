@@ -1,0 +1,78 @@
+# -------------------------
+# Node / Package Managers
+# -------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.lock
+.pnpm-debug.log
+
+# -------------------------
+# Next.js / Build Artifacts
+# -------------------------
+.next/
+out/
+dist/
+build/
+
+# -------------------------
+# Turborepo / Cache
+# -------------------------
+.turbo/
+turbo/
+.cache/
+
+# -------------------------
+# Env Files
+# -------------------------
+.env
+.env*.local
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+*.csv
+*.dat
+*.pid
+*.seed
+*.gz
+
+# -------------------------
+# Test / Coverage
+# -------------------------
+coverage/
+*.lcov
+jest-cache/
+.vitest/
+.vscode-test/
+
+# -------------------------
+# OS / Editor Files
+# -------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+# Misc
+# -------------------------
+*.tgz
+*.tmp
+*.temp
+*.bak
+*.local
+
+# -------------------------
+# Public Artifacts (if generated at runtime)
+# -------------------------
+public/*.tmp
