@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import "../globals.css";
-import DocsClientLayout from "./DocsClientLayout";
+import ChangelogClientLayout from "./ChangelogClientLayout";
 
 export const metadata: Metadata = {
   title: "Docs — AI Workflow Toolkit",
   description: "Docs and quick guides for the AI Workflow Toolkit.",
 };
 
-export default function DocsLayout({
+export default function ChangelogLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -18,12 +18,12 @@ export default function DocsLayout({
       fallback={
         <div className="docs-root">
           <main className="docs-content" id="main">
-            <p>Loading docs…</p>
+            <p>Loading changelog…</p>
           </main>
         </div>
       }
     >
-      <DocsClientLayout>{children}</DocsClientLayout>
+      <ChangelogClientLayout>{children}</ChangelogClientLayout>
     </Suspense>
   );
 }

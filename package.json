@@ -7,12 +7,16 @@
   ],
   "packageManager": "npm@10.8.2",
   "scripts": {
-    "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
-    "start": "turbo run start",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean && npx rimraf node_modules .turbo"
+    "dev": "npm --prefix apps/tools-next run dev",
+    "build": "npm --prefix apps/tools-next run build",
+    "start": "npm --prefix apps/tools-next run start",
+    "lint": "npm --prefix apps/tools-next run lint",
+    "typecheck": "npm --prefix apps/tools-next run typecheck",
+    "deploy:dev": "firebase deploy --only hosting:dev",
+    "deploy:prod": "firebase deploy --only hosting:prod --project aiworkflowtoolkit-prod",
+    "preview:dev": "firebase hosting:channel:deploy dev --expires 7d",
+    "use:dev": "firebase use aiworkflowtoolkit-dev",
+    "use:prod": "firebase use aiworkflowtoolkit-prod"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

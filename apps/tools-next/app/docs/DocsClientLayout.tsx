@@ -171,7 +171,7 @@ export default function DocsClientLayout({
         <div className="docs-container">
           © {new Date().getFullYear()} AI Tools Hub ·{" "}
           <a href="https://github.com/mattc-27/aiworkflowtoolkit">GitHub</a> ·{" "}
-          <a href="mattc927.dev@gmail.com">Contact</a>
+          <a href="mailto:mattc927.dev@gmail.com">Contact</a>
         </div>
       </footer>
     </div>

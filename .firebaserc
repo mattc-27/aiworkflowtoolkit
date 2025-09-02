@@ -1,0 +1,25 @@
+{
+  "projects": {
+    "default": "aiworkflowtoolkit-dev"
+  },
+  "targets": {
+    "aiworkflowtoolkit-dev": {
+      "hosting": {
+        "dev": [
+          "aiworkflowtoolkit-dev"
+        ],
+        "prod": [
+          "aiworkflowtoolkit-prod"
+        ]
+      }
+    },
+    "aiworkflowtoolkit-prod": {
+      "hosting": {
+        "prod": [
+          "aiworkflowtoolkit-prod"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

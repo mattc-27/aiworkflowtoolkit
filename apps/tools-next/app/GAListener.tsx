@@ -1,20 +1,19 @@
+// app/GAListener.tsx
 "use client";
-
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { pageview } from "@/lib/gtag";
 
 export default function GAListener() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const search = useSearchParams();
 
   useEffect(() => {
     if (!pathname) return;
-    const url = searchParams?.toString()
-      ? `${pathname}?${searchParams.toString()}`
-      : pathname;
-    pageview(url);
-  }, [pathname, searchParams]);
+  
+    window.gtag?.("config", process.env.NEXT_PUBLIC_GA_ID, {
+      page_path: search?.toString() ? `${pathname}?${search}` : pathname,
+    });
+  }, [pathname, search]);
 
   return null;
 }

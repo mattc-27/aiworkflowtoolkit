@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-// apps/tools-next/app/layout.tsx
 import Script from "next/script";
+import { Suspense } from "react";
 import { GA_ID } from "@/lib/gtag";
 import GAListener from "./GAListener";
 import "./globals.css";
@@ -21,7 +21,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // SERVER COMPONENT – no "use client" here so metadata works
   return (
     <html lang="en">
       <body>
@@ -34,17 +33,30 @@ export default function RootLayout({
             />
             <Script id="ga-init" strategy="afterInteractive">
               {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', '${GA_ID}', { anonymize_ip: true });
-      `}
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { anonymize_ip: true });
+              `}
             </Script>
           </>
         ) : null}
-        <GAListener />
-        <ClientLayout>{children}</ClientLayout>
+
+        {/* Wrap GAListener in Suspense to avoid CSR bailout if it uses router hooks */}
+        <Suspense fallback={null}>
+          <GAListener />
+        </Suspense>
+
+        <Suspense
+          fallback={
+            <main className="container main">
+              <p>Loading…</p>
+            </main>
+          }
+        >
+          <ClientLayout>{children}</ClientLayout>
+        </Suspense>
       </body>
     </html>
   );

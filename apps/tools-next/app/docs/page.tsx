@@ -185,7 +185,7 @@ Risk:
           guessing.
         </p>
         <p>
-          <Link href="/tools/prompt-compress">Open compression →</Link>
+          <Link href="/tools/prompt-compression">Open compression →</Link>
         </p>
       </section>
       <section className="example-block" aria-labelledby="ex-compress">

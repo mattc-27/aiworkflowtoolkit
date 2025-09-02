@@ -1,5 +1,4 @@
-import "../globals.css";
-import "./style.css";
+import { Suspense } from "react";
 import ToolsClientLayout from "./ToolsClientLayout";
 
 export default function ToolsLayout({
@@ -7,10 +6,15 @@ export default function ToolsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // SERVER COMPONENT – keeps CSS imports and wraps with client-only layer if needed
   return (
-    <div className="container main">
+    <Suspense
+      fallback={
+        <main className="page tool">
+          <p>Loading…</p>
+        </main>
+      }
+    >
       <ToolsClientLayout>{children}</ToolsClientLayout>
-    </div>
+    </Suspense>
   );
 }

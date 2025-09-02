@@ -226,7 +226,7 @@ export default function TokenCostPage() {
                 return (
                   <tr key={k} className={active}>
                     <td>{p.name}</td>
-                    <td>{p.context}</td>
+                    <td>{p.contextK}</td>
                     <td>${p.promptPer1K.toFixed(6)}</td>
                     <td>${p.completionPer1K.toFixed(6)}</td>
                     <td>${c.toFixed(6)}</td>

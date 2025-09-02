@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function useToast() {
   const [msg, setMsg] = useState<string | null>(null);

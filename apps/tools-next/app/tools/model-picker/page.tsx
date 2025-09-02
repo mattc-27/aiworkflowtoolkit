@@ -2,8 +2,8 @@
 "use client";
 import { useMemo, useState } from "react";
 import { scoreModels } from "../../../lib/model-picker";
-import { PRICING } from "../../../lib/pricing";
-import { FACTS } from "../../../lib/models"; // <-- use real FACTS
+//import { PRICING } from "../../../lib/pricing";
+// import { FACTS } from "../../../lib/models"; // <-- use real FACTS
 
 export default function ModelPickerPage() {
   const [budgetWeight, setBudgetWeight] = useState(0.6);
