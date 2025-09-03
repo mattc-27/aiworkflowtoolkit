@@ -26,22 +26,21 @@ export default function Page() {
             </h1>
             <p className="hero2-lead">
               Estimate costs, compress prompts, and generate JSON Schemas—all in
-              one place. Run in your browser, no accounts required.
+              one place. Use the guided workflow or jump into any tool.
             </p>
+
             <div
               className="hero2-ctas"
               role="group"
               aria-label="Primary actions"
             >
+              {/* Primary CTA goes to the stepper (redirect lives at /tools) */}
               <Link prefetch href="/tools" className="btn btn-primary">
-                Open tools now
+                Start Workflow
               </Link>
-              <Link
-                prefetch
-                href="/tools/token-cost"
-                className="btn btn-secondary"
-              >
-                Try Cost Calculator <ArrowRight size={16} aria-hidden="true" />
+              {/* Secondary CTA browses all tools */}
+              <Link prefetch href="/tools/browse" className="btn btn-secondary">
+                Browse Tools <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
 
@@ -55,7 +54,7 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Right: image placeholder (drop your Canva image here) */}
+          {/* Right: image */}
           <div className="hero-visual" aria-hidden="true">
             <figure className="hero-art hero-art--softfade">
               <Image
@@ -76,7 +75,9 @@ export default function Page() {
         <h2 id="who-title" className="section-title lg">
           Clear value for different workflows
         </h2>
-        <p className="section-sub lg">Clear value for different workflows.</p>
+        <p className="section-sub lg">
+          Choose the guided workflow or any tool on its own.
+        </p>
 
         <div className="who-cards">
           <article className="who-card">
@@ -88,8 +89,8 @@ export default function Page() {
             </p>
             <ul className="who-list">
               <li>Cost breakdown JSON for CI</li>
-              <li>Compression + re-cost in one click</li>
-              <li>Schema generation for contracts, APIs, and validators</li>
+              <li>Compression → re-cost in one click</li>
+              <li>Schema generation for contracts, APIs, validators</li>
             </ul>
           </article>
 
@@ -99,13 +100,12 @@ export default function Page() {
               Analysts
             </div>
             <p className="who-copy">
-              Ensure predictable costs and reliable outputs before rolling into
-              production systems.
+              Ensure predictable costs and reliable outputs before production.
             </p>
             <ul className="who-list">
               <li>Forecast token usage and costs</li>
               <li>Validate structured outputs</li>
-              <li>Benchmark providers before deployment</li>
+              <li>Benchmark providers pre-deployment</li>
             </ul>
           </article>
 
@@ -133,8 +133,8 @@ export default function Page() {
               Streamline costs, prompts, and structure—side by side
             </h2>
             <p className="section-sub">
-              Practical utilities designed for real projects. Move between tools
-              without friction, export outputs you can reuse anywhere.
+              Practical utilities for real projects. Follow the workflow or open
+              any tool directly.
             </p>
           </header>
 
@@ -163,7 +163,7 @@ export default function Page() {
               </div>
               <p className="info-desc">
                 Trim filler and normalize structure, then re-cost to confirm
-                savings → reduce wasted tokens before deployment.
+                savings.
               </p>
             </article>
 
@@ -177,8 +177,8 @@ export default function Page() {
                 </h3>
               </div>
               <p className="info-desc">
-                Describe fields in plain English and get a copyable schema →
-                consistent outputs that integrate cleanly with your systems.
+                Describe fields in plain English and get a copyable schema for
+                consistent outputs.
               </p>
             </article>
           </div>
@@ -251,7 +251,8 @@ export default function Page() {
               Try the AI Workflow Toolkit now
             </h2>
             <p className="section-sub lg">
-              No signup. No installs. Open a tool and start testing.
+              Use the guided workflow or browse the full toolbox—no signup
+              needed.
             </p>
           </div>
 
@@ -261,7 +262,10 @@ export default function Page() {
             aria-label="Get started actions"
           >
             <Link prefetch href="/tools" className="btn btn-primary">
-              Explore Tools
+              Start Workflow
+            </Link>
+            <Link prefetch href="/tools/browse" className="btn btn-secondary">
+              Browse Tools
             </Link>
             <Link prefetch href="/docs" className="btn btn-secondary">
               View Docs

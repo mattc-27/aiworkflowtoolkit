@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 
-// (same GROUPS + component body you already have)
 const GROUPS = [
   {
     label: "Getting Started",
@@ -48,10 +47,13 @@ export default function DocsClientLayout({
     ),
   }));
 
+  // Close mobile sidebar when clicking an in-page anchor
   useEffect(() => {
     const onClick = (e: Event) => {
-      const a = e.target as HTMLElement;
-      if (a.tagName !== "A") return;
+      const el = e.target as HTMLElement | null;
+      if (el?.closest("a[href^='#']")) {
+        document.querySelector(".docs-root")?.classList.remove("sidebar-open");
+      }
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
@@ -59,19 +61,21 @@ export default function DocsClientLayout({
 
   return (
     <div className="docs-root fullbleed-docs">
-      {/* Topbar */}
+      {/* Header */}
       <header className="docs-topbar" role="banner">
         <div className="docs-container topbar-row">
           <div className="topbar-left">
             <Link
               href="/"
               className="docs-brand"
-              aria-label="AI Tools Hub (Home)"
+              aria-label="AI Workflow Toolkit (Home)"
             >
-              AI Tools Hub
+              AI Workflow Toolkit
             </Link>
             <nav className="docs-toplinks" aria-label="Site">
-              <Link href="/tools">Tools</Link>
+              <Link href="/tools">Workflow</Link>
+              <span aria-hidden>·</span>
+              <Link href="/tools/browse">Browse Tools</Link>
               <span aria-hidden>·</span>
               <Link href="/docs" className="is-active">
                 Docs
@@ -89,10 +93,14 @@ export default function DocsClientLayout({
                   ?.classList.add("sidebar-open")
               }
             >
-              ☰ Sections
+              Sections
             </button>
 
-            <div className="topbar-search" role="search">
+            <form
+              className="topbar-search"
+              role="search"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <Search size={16} aria-hidden />
               <input
                 type="search"
@@ -101,77 +109,74 @@ export default function DocsClientLayout({
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
               />
-            </div>
-
-            <div className="version-chip" title="Docs version">
-              stable
-            </div>
+            </form>
           </div>
         </div>
       </header>
 
       {/* Main grid */}
-      <div className="docs-container docs-grid">
-        <div
-          className="sidebar-overlay"
-          onClick={() =>
-            document
-              .querySelector(".docs-root")
-              ?.classList.remove("sidebar-open")
-          }
-        />
-        <aside className="docs-sidebar" aria-label="Sections">
-          <button
-            className="topbar-menu-btn"
-            style={{ marginBottom: 8, display: "none" }}
+      <div className="docs-body">
+        <div className="docs-container docs-grid">
+          {/* Overlay for mobile */}
+          <div
+            className="sidebar-overlay"
             onClick={() =>
               document
                 .querySelector(".docs-root")
                 ?.classList.remove("sidebar-open")
             }
-          >
-            Close
-          </button>
-          {filtered.map((group) => (
-            <nav key={group.label} className="side-group">
-              <button
-                className="side-group-title"
-                aria-expanded="true"
-                data-collapsible
-              >
-                {group.label}
-              </button>
-              <ul className="side-list">
-                {group.items.length === 0 && (
-                  <li className="side-empty">No matches</li>
-                )}
-                {group.items.map((i) => (
-                  <li key={i.href}>
-                    <a href={i.href} data-navlink>
-                      {i.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
-        </aside>
+            aria-hidden
+          />
 
-        <main className="docs-content" id="main">
-          {children}
-        </main>
+          {/* Left sidebar */}
+          <aside className="docs-sidebar" aria-label="Sections">
+            {filtered.map((group) => (
+              <nav key={group.label} className="side-group">
+                <button
+                  className="side-group-title"
+                  data-collapsible
+                  aria-expanded="true"
+                  aria-controls={`list-${group.label}`}
+                >
+                  {group.label}
+                </button>
+                <ul id={`list-${group.label}`} className="side-list">
+                  {group.items.length ? (
+                    group.items.map((i) => (
+                      <li key={i.href}>
+                        <a href={i.href} data-navlink>
+                          {i.label}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="side-empty">No matches</li>
+                  )}
+                </ul>
+              </nav>
+            ))}
+          </aside>
 
-        <aside className="docs-toc" aria-label="On this page">
-          <div className="docs-toc-title">On this page</div>
-          <nav id="toc-list" />
-        </aside>
+          {/* Center content */}
+          <main className="docs-content" id="main" role="main">
+            {children}
+          </main>
+
+          {/* Right TOC */}
+          <aside className="docs-toc" aria-label="On this page">
+            <div className="docs-toc-title">On this page</div>
+            <nav id="toc-list" />
+          </aside>
+        </div>
       </div>
 
+      {/* Footer */}
       <footer className="docs-footer" role="contentinfo">
         <div className="docs-container">
-          © {new Date().getFullYear()} AI Tools Hub ·{" "}
-          <a href="https://github.com/mattc-27/aiworkflowtoolkit">GitHub</a> ·{" "}
-          <a href="mailto:mattc927.dev@gmail.com">Contact</a>
+          <small>
+            Need the tools? <a href="/tools">Open the Workflow</a> or{" "}
+            <a href="/tools/browse">Browse Tools</a>.
+          </small>
         </div>
       </footer>
     </div>

@@ -16,7 +16,7 @@ export default function DocsLayout({
   return (
     <Suspense
       fallback={
-        <div className="docs-root">
+        <div className="docs-root fullbleed-docs">
           <main className="docs-content" id="main">
             <p>Loading docs…</p>
           </main>
