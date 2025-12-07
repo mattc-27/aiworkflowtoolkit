@@ -1,0 +1,206 @@
+/* ====== Tools Browse (scoped) ====== */
+.page.tools {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 16px 28px;
+}
+
+/* Header */
+.tools-hero .h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 4px 0 6px;
+}
+
+.tools-hero p {
+    color: rgba(237, 242, 247, .75);
+}
+
+/* Toolbar */
+.tools-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0 16px;
+}
+
+.tools-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .06);
+}
+
+.tools-search input {
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: #f8f9fa;
+    width: 230px;
+}
+
+.search-clear {
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, .7);
+    cursor: pointer;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .14);
+    cursor: pointer;
+}
+
+.pill:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+.pill.is-active {
+    background: linear-gradient(180deg, rgba(124, 58, 237, .25), rgba(124, 58, 237, .15));
+    border-color: rgba(124, 58, 237, .55);
+}
+
+.pill-count {
+    opacity: .85;
+    font-weight: 700;
+}
+
+/* Section head */
+.tools-section {
+    margin-top: 10px;
+}
+
+.section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 6px 2px 10px;
+}
+
+.section-kicker {
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(237, 242, 247, .65);
+}
+
+.h3 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Grid of cards */
+.grid-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 760px) {
+    .grid-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1100px) {
+    .grid-cards {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.toolcard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .03);
+    text-decoration: none;
+    color: #fff;
+    transition: transform .08s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.toolcard:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 40px -24px rgba(124, 58, 237, .7);
+    background: rgba(255, 255, 255, .04);
+}
+
+.toolcard.empty {
+    align-items: flex-start;
+}
+
+.toolcard-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.toolcard-title {
+    font-weight: 800;
+}
+
+.toolcard-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    background: rgba(124, 58, 237, .18);
+    border: 1px solid rgba(124, 58, 237, .45);
+    border-radius: 999px;
+}
+
+.toolcard-desc {
+    color: rgba(237, 242, 247, .80);
+    font-size: 14px;
+    min-height: 44px;
+}
+
+.toolcard-cta {
+    font-size: 13px;
+    color: #c7b6ff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.help {
+    color: rgba(237, 242, 247, .70);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .08);
+    color: #fff;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, .10);
+}
+
+.btn.btn-secondary {
+    /* same look as global secondary */
+}

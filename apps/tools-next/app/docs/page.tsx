@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect } from "react";
 import Link from "next/link";
 
@@ -37,7 +38,6 @@ export default function DocsPage() {
           const id = `#${e.target.id}`;
           const el = linkMap.get(id);
           if (!el) return;
-          // Clear actives in each container
           if (el.closest("#toc-list")) {
             linksRight.forEach((l) => l.classList.toggle("active", l === el));
           } else {
@@ -49,7 +49,6 @@ export default function DocsPage() {
     );
 
     headings.forEach((h) => {
-      // Add autolink symbol
       if (!h.querySelector(".autolink")) {
         const al = document.createElement("a");
         al.href = `#${h.id}`;
@@ -60,7 +59,7 @@ export default function DocsPage() {
       obs.observe(h);
     });
 
-    // Collapsible groups in sidebar
+    // Collapsible groups
     document
       .querySelectorAll<HTMLButtonElement>("[data-collapsible]")
       .forEach((btn) => {
@@ -106,6 +105,7 @@ export default function DocsPage() {
         <hr />
       </header>
 
+      {/* Token → Cost */}
       <section id="token-cost">
         <h2>Token → Cost</h2>
         <p>
@@ -125,7 +125,7 @@ export default function DocsPage() {
   "completion_tokens": 512
 }`}</pre>
       </section>
-      {/* Example & Use-case */}
+
       <section className="example-block" aria-labelledby="ex-cost">
         <div className="example-head">
           <h3 id="ex-cost" className="example-title">
@@ -178,6 +178,7 @@ Risk:
         </div>
       </section>
 
+      {/* Prompt Compression */}
       <section id="compression">
         <h2>Prompt Compression</h2>
         <p>
@@ -185,9 +186,10 @@ Risk:
           guessing.
         </p>
         <p>
-          <Link href="/tools/prompt-compression">Open compression →</Link>
+          <Link href="/tools/prompt-compress">Open compression →</Link>
         </p>
       </section>
+
       <section className="example-block" aria-labelledby="ex-compress">
         <div className="example-head">
           <h3 id="ex-compress" className="example-title">
@@ -217,12 +219,13 @@ Return JSON: { "type": "bug|feedback", "area": "string?", "severity": "low|med|h
           <div className="usecase-title">Use-case: support triage at scale</div>
           <p className="usecase-p">
             Compress the triage prompt used by your helpdesk bot to cut tokens
-            per ticket. Click “Recalculate cost with this compressed prompt” to
+            per ticket. Click “Recalculate cost” with this compressed prompt to
             confirm savings for your daily volume.
           </p>
         </div>
       </section>
 
+      {/* Prompt → JSON Schema */}
       <section id="json-schema">
         <h2>Prompt → JSON Schema</h2>
         <p>
@@ -233,6 +236,7 @@ Return JSON: { "type": "bug|feedback", "area": "string?", "severity": "low|med|h
           <Link href="/tools/prompt-to-json-schema">Open schema tool →</Link>
         </p>
       </section>
+
       <section className="example-block" aria-labelledby="ex-schema">
         <div className="example-head">
           <h3 id="ex-schema" className="example-title">
@@ -256,13 +260,13 @@ role: enum(admin|editor|viewer)`}</pre>
             <div className="label">Generated schema (preview)</div>
             <pre className="example-out">{`{
   "type": "object",
-  "required": ["name","email","age","role"],
+  "required": ["name", "email","age","role"],
   "properties": {
     "name": { "type": "string" },
     "email": { "type": "string", "format": "email" },
-    "age": { "type": "number", "minimum": 0, "maximum": 120 },
+    "age":   { "type": "number", "minimum": 0, "maximum": 120 },
     "newsletterOptIn": { "type": "boolean" },
-    "role": { "type": "string", "enum": ["admin","editor","viewer"] }
+    "role":  { "type": "string", "enum": ["admin","editor","viewer"] }
   },
   "additionalProperties": false
 }`}</pre>
@@ -281,87 +285,53 @@ role: enum(admin|editor|viewer)`}</pre>
         </div>
       </section>
 
+      {/* Workflows */}
       <section id="flow-compress-cost">
         <h2>Workflow: Compression → Cost</h2>
         <p>
-          Compress prompts, then compare providers with the compressed version
-          to confirm savings.
+          Compress the prompt, then immediately re-cost to confirm savings.
+          Repeat until targets are met.
         </p>
       </section>
 
       <section id="flow-schema-first">
         <h2>Workflow: Schema-first outputs</h2>
         <p>
-          Generate a JSON Schema, include it in prompts, and enforce structure
-          in downstream tasks.
+          Define the schema first, then tune prompts to satisfy required fields
+          and types.
         </p>
       </section>
 
+      {/* Notes */}
       <section id="providers">
         <h2>Comparing providers</h2>
         <p>
-          This release focuses on OpenAI models. We’re adding Anthropic
-          (Claude), Google Gemini, and xAI Grok.
+          Costs vary widely across models and vendors—always measure with your
+          own prompts and outputs.
         </p>
       </section>
 
       <section id="model-coverage">
         <h2>Model coverage</h2>
         <p>
-          Initial pricing/behavior reflects OpenAI’s public docs; cross-vendor
-          pricing/contexts will be added incrementally.
+          The calculator includes current providers and models common in
+          production; we add new ones regularly.
         </p>
-      </section>
-      <section className="example-block" aria-labelledby="ex-picker">
-        <div className="example-head">
-          <h3 id="ex-picker" className="example-title">
-            Example
-          </h3>
-          <p className="example-desc">
-            Rank models by budget, speed, context, and capability.
-          </p>
-        </div>
-
-        <div className="example-grid">
-          <div>
-            <div className="label">Task</div>
-            <pre className="example-pre">{`Generate 5 social post ideas from a product brief.
-Constraints: finish under $0.01 per request, latency < 800ms, context ≥ 16k.`}</pre>
-          </div>
-          <div>
-            <div className="label">Picker configuration</div>
-            <pre className="example-out">{`weights: { cost: 0.45, speed: 0.30, context: 0.15, quality: 0.10 }
-must_have: { context_tokens: 16000 }
-limit: top 3`}</pre>
-          </div>
-        </div>
-
-        <div className="usecase-card">
-          <div className="usecase-title">
-            Use-case: choose a model for a high-throughput bot
-          </div>
-          <p className="usecase-p">
-            For Slack or website bots with strict latency/price constraints,
-            tune the weights toward
-            <em>cost</em> and <em>speed</em>, set a minimum context, and compare
-            the top 3 across providers.
-          </p>
-        </div>
       </section>
 
       <section id="privacy">
         <h2>Privacy</h2>
         <p>
-          Tools run in your browser; exports happen locally. We don’t store your
-          prompts or outputs.
+          No accounts, no servers: all tools run in your browser. Your inputs
+          never leave the page.
         </p>
       </section>
 
       <section id="feedback">
         <h2>Feedback</h2>
         <p>
-          Found an issue or want a feature?{" "}
-          <a href="mailto:hello@example.com">Email us</a>.
+          Found a bug or want a feature? Open an issue on GitHub or drop a note
+          via the footer link.
         </p>
       </section>
     </article>

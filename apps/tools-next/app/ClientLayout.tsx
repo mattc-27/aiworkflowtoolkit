@@ -6,7 +6,8 @@ import { Sparkles } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/tools", label: "Tools" },
+  { href: "/tools/browse", label: "Browse Tools" },
+  { href: "/tools", label: "Workflow", isButton: true },
 ];
 
 export default function ClientLayout({
@@ -29,6 +30,22 @@ export default function ClientLayout({
               const active =
                 pathname === l.href ||
                 (l.href !== "/" && pathname.startsWith(l.href));
+
+              // Apply button styling if marked as button
+              if (l.isButton) {
+                return (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={`btn btn-primary nav-btn ${
+                      active ? "is-active" : ""
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                );
+              }
+
               return (
                 <Link
                   key={l.href}
