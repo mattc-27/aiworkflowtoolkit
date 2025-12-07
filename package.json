@@ -28,7 +28,10 @@
     "@dqbd/tiktoken": "^1.0.22",
     "gsap": "^3.13.0",
     "lucide-react": "^0.542.0",
-    "zod": "^3.25.76",
-    "zod-to-json-schema": "^3.24.6"
+    "zod": "3.23.8",
+    "zod-to-json-schema": "3.24.6"
+  },
+  "overrides": {
+    "zod": "3.23.8"
   }
 }
